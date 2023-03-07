@@ -133,7 +133,7 @@
 <h3>Отправить сообщение в техподдержку</h3>
 <form method="post">
   {% csrf_token %}
-  {{ form|crispy }}
+  {{ form }}
   <button type="submit" class="btn btn-primary btn-block">Отаправить</button>
 </form>
 </p>

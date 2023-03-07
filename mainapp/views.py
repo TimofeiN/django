@@ -88,7 +88,9 @@ class CoursesDetailView(TemplateView):
                 .order_by("-created", "-rating")[:5]
                 .select_related()
             )
-            cache.set(f"feedback_list_{pk}", context["feedback_list"], timeout=300)  # 5 minutes
+            cache.set(f"feedback_list_{pk}", context["feedback_list"], timeout=300)
+            
+            # # 5 minutes
 
             # # Archive object for tests --->
             # import pickle
@@ -101,7 +103,7 @@ class CoursesDetailView(TemplateView):
             context["feedback_list"] = cached_feedback
 
         return context
-    
+        
 
 class CourseFeedbackFormProcessView(LoginRequiredMixin, CreateView):
     model = mainapp_models.CourseFeedback
